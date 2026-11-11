@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar un proyecto · Ralpha L.</title>
+    <meta name="description" content="Cuéntale a Ralpha L. sobre tu festival, espacio o pieza.">
+    <meta property="og:title" content="Iniciar un proyecto · Ralpha L.">
+    <meta property="og:description" content="Cuéntale a Ralpha L. sobre tu festival, espacio o pieza.">
+    <meta property="og:image" content="/media/sf/hero.jpg">
+    <meta name="theme-color" content="#050505">
+    <link rel="icon" href="/assets/monogram.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=4">
+</head>
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <nav class="nav-bar">
+        <div class="logo-container">
+            <a href="/"><img src="/assets/logo.jpg" alt="Ralpha L." class="logo"></a>
+        </div>
+        <div class="nav-links">
+            <a href="/#work" class="nav-link">Proyectos</a>
+            <a href="/about" class="nav-link">Sobre mí</a>
+            <div class="nav-contact-wrapper">
+                <a href="#contacto" class="nav-link contact-btn">Contacto</a>
+                <div class="contact-popup">
+                    <p><a href="mailto:rafaprato96@gmail.com">rafaprato96@gmail.com</a></p>
+                    <p><a href="https://wa.me/584126357367" target="_blank" rel="noopener">WhatsApp +58 412 635 7367</a></p>
+                </div>
+            </div>
+        </div>
+    </nav>
+<main class="case-page">
+    <section class="cta-band" style="border-top:none;padding-top:2rem">
+        <p class="case-kicker">Iniciar un proyecto</p>
+        <h1 class="case-title" style="font-size:clamp(2.2rem,6vw,4.5rem)">Cuéntame qué tienes en mente</h1>
+        <form id="project-form" class="project-form">
+            <label>Tu nombre<input name="nombre" required placeholder="Nombre y apellido"></label>
+            <label>Tipo de proyecto
+                <select name="tipo">
+                    <option>Dirección creativa de una experiencia</option>
+                    <option>Visuales en vivo / mapping</option>
+                    <option>Obra o comisión</option>
+                    <option>Diseño industrial / POS</option>
+                    <option>Otro</option>
+                </select>
+            </label>
+            <label>Fecha y lugar<input name="cuando" placeholder="Ej.: marzo 2027, Bogotá"></label>
+            <label>Detalles<textarea name="detalles" rows="5" required placeholder="Evento, espacio, público, presupuesto aproximado…"></textarea></label>
+            <div class="form-actions">
+                <button type="submit" class="brutalist-btn" data-via="wa">Enviar por WhatsApp <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="arrow-icon"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></button>
+                <button type="submit" class="secondary-btn" data-via="mail">Enviar por email</button>
+            </div>
+        </form>
+    </section>
+</main>
+<style>
+.project-form { width:100%; max-width:720px; display:flex; flex-direction:column; gap:1.6rem; text-align:left; margin-top:1rem; }
+.project-form label { display:flex; flex-direction:column; gap:.5rem; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; color:rgba(245,245,245,.65); }
+.project-form input, .project-form textarea, .project-form select { background:transparent; border:none; border-bottom:2px solid rgba(245,245,245,.2); color:var(--color-white); padding:.8rem 0; font:1.05rem var(--font-primary); resize:vertical; text-transform:none; letter-spacing:0; }
+.project-form select option { background:#050505; }
+.project-form input:focus, .project-form textarea:focus, .project-form select:focus { outline:none; border-bottom-color:var(--color-violet); }
+.form-actions { display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; margin-top:1rem; }
+</style>
+<script>
+(function(){
+  const f=document.getElementById('project-form'); let via='wa';
+  f.querySelectorAll('button[data-via]').forEach(b=>b.addEventListener('click',()=>via=b.dataset.via));
+  f.addEventListener('submit',e=>{
+    e.preventDefault(); const d=new FormData(f);
+    const t='Hola Ralpha, soy '+d.get('nombre')+'.\nProyecto: '+d.get('tipo')+'\nFecha y lugar: '+(d.get('cuando')||'-')+'\n\n'+d.get('detalles');
+    if(via==='wa') window.open('https://wa.me/584126357367?text='+encodeURIComponent(t),'_blank');
+    else location.href='mailto:rafaprato96@gmail.com?subject='+encodeURIComponent('Nuevo proyecto: '+d.get('tipo'))+'&body='+encodeURIComponent(t);
+  });
+})();
+</script>
+
+    <footer class="footer" id="contacto-footer">
+        <div class="marquee-container">
+            <div class="marquee-text">DIRECCIÓN CREATIVA • VISUALES EN VIVO • MAPPING • OBRA DE AUTOR • LET YOUR SENSES LEAD • DIRECCIÓN CREATIVA • VISUALES EN VIVO • MAPPING • OBRA DE AUTOR • LET YOUR SENSES LEAD • DIRECCIÓN CREATIVA • VISUALES EN VIVO • MAPPING • OBRA DE AUTOR • LET YOUR SENSES LEAD • DIRECCIÓN CREATIVA • VISUALES EN VIVO • MAPPING • OBRA DE AUTOR • LET YOUR SENSES LEAD • DIRECCIÓN CREATIVA • VISUALES EN VIVO • MAPPING • OBRA DE AUTOR • LET YOUR SENSES LEAD • DIRECCIÓN CREATIVA • VISUALES EN VIVO • MAPPING • OBRA DE AUTOR • LET YOUR SENSES LEAD •</div>
+        </div>
+        <div class="footer-bottom">
+            <span>© <span data-year>2026</span> RALPHA L. · Caracas · Colombia</span>
+            <span>Let your senses lead.</span>
+        </div>
+    </footer>
+    <script src="/main.js?v=4"></script>
+</body>
+</html>
