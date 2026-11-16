@@ -178,7 +178,7 @@
         if (started) return; started = true;
         if (startOverlay) startOverlay.hidden = true;
         if (!decks[0].btn) loadClip(clips[0], 0);
-        if (!decks[1].btn) loadClip(clips[clips.length > 5 ? 5 : 1], 1);
+        if (!decks[1].btn) loadClip(clips[clips.length > 22 ? 22 : 1], 1);
         setTarget(0);
         raf = requestAnimationFrame(frame);
     }
@@ -208,6 +208,6 @@
     document.addEventListener('keydown', function (e) {
         if (!started || /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
         var n = parseInt(e.key, 10);
-        if (n >= 1 && n <= clips.length) { loadClip(clips[n - 1], target); setTarget(target ? 0 : 1); }
+        if (n >= 1 && n <= Math.min(9, clips.length)) { loadClip(clips[n - 1], target); setTarget(target ? 0 : 1); }
     });
 })();
