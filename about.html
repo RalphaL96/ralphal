@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=4">
+    <link rel="stylesheet" href="/styles.css?v=5">
 </head>
 <body>
     <div class="cursor-dot"></div>
@@ -24,7 +24,8 @@
             <a href="/"><img src="/assets/logo.jpg" alt="Ralpha L." class="logo"></a>
         </div>
         <div class="nav-links">
-            <a href="/#work" class="nav-link">Proyectos</a>
+            <a href="/#work" class="nav-link nav-hide-sm">Proyectos</a>
+            <a href="/laboratorio" class="nav-link">Laboratorio</a>
             <a href="/about" class="nav-link">Sobre mí</a>
             <div class="nav-contact-wrapper">
                 <a href="#contacto" class="nav-link contact-btn">Contacto</a>
@@ -59,6 +60,18 @@
             <p>Desde 2023 mezclo visuales en vivo para la escena electrónica como Ralpha L. Hoy dirijo la parte creativa de Gerardo Campos Estudio y desarrollo mi propia obra: Abstracción Emocional y LPhanty.</p>
         </div>
     </section>
+    <section class="pausa-section">
+        <div class="pausa-copy">
+            <p class="case-kicker">Pausa · un minuto</p>
+            <h2>El arte como proceso terapéutico, en cuatro respiraciones.</h2>
+            <p>Inhala cuatro segundos, sostén cuatro, exhala seis. La forma de color te acompaña. Es la versión digital de Trazo Interno, mi experiencia de arte terapéutico con meditación guiada.</p>
+        </div>
+        <div class="lab-stage" data-pausa>
+            <canvas aria-hidden="true"></canvas>
+            <div class="breath-word" data-word aria-live="polite">Respira</div>
+            <div class="lab-overlay"><button class="lab-btn solid" type="button" data-start>Empezar · 1 minuto</button><span class="lab-readout" data-count>Ciclo 0 / 4</span></div>
+        </div>
+    </section>
     <section class="about-timeline-section">
         <h3 class="timeline-title-horizontal">TRAYECTORIA // EXPERIENCE</h3>
         <div class="timeline-horizontal-grid">
@@ -86,9 +99,10 @@
         </div>
         <div class="footer-bottom">
             <span>© <span data-year>2026</span> RALPHA L. · Caracas · Colombia</span>
-            <span><a href="https://www.instagram.com/ralphal.art/" target="_blank" rel="noopener" style="text-decoration:none">@ralphal.art</a> · Let your senses lead.</span>
+            <span><a href="/laboratorio" style="text-decoration:none">Laboratorio</a> · <a href="https://www.instagram.com/ralphal.art/" target="_blank" rel="noopener" style="text-decoration:none">@ralphal.art</a> · Let your senses lead.</span>
         </div>
     </footer>
-    <script src="/main.js?v=4"></script>
+    <script src="/main.js?v=5"></script>
+    <script src="/lab.js?v=5" defer></script>
 </body>
 </html>

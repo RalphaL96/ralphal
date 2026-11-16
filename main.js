@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const quadrants = ['assets/hero-3.webp', 'assets/hero-4.webp', 'assets/hero-1.webp', 'assets/hero-2.webp'];
         quadrants.forEach(src => { const i = new Image(); i.src = src; });
         container.addEventListener('mousemove', (e) => {
+            if (container.classList.contains('gl-on')) return;
             const rect = container.getBoundingClientRect();
             const x = ((e.clientX - rect.left) / rect.width) * 100;
             const y = ((e.clientY - rect.top) / rect.height) * 100;

@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=4">
+    <link rel="stylesheet" href="/styles.css?v=5">
 </head>
 <body>
     <div class="cursor-dot"></div>
@@ -24,7 +24,8 @@
             <a href="/"><img src="/assets/logo.jpg" alt="Ralpha L." class="logo"></a>
         </div>
         <div class="nav-links">
-            <a href="/#work" class="nav-link">Proyectos</a>
+            <a href="/#work" class="nav-link nav-hide-sm">Proyectos</a>
+            <a href="/laboratorio" class="nav-link">Laboratorio</a>
             <a href="/about" class="nav-link">Sobre mí</a>
             <div class="nav-contact-wrapper">
                 <a href="#contacto" class="nav-link contact-btn">Contacto</a>
@@ -46,7 +47,7 @@
         </div>
         <dl class="case-meta"><div><dt>Tipo</dt><dd>Obra de autor</dd></div><div><dt>Soporte</dt><dd>Lienzo + AR / mapping</dd></div><div><dt>Tecnología</dt><dd>Artivive · WebAR propia · Resolume</dd></div><div><dt>Estado</dt><dd>Obra disponible y por encargo</dd></div></dl>
     </header>
-    <div class="case-hero cols-2">
+    <div style="view-transition-name: vt-abstraccion-emocional" class="case-hero cols-2">
         <figure class="fig r-3-4 contain"><img class="m" src="/media/ae/bocallena.jpg" alt="Pintura Bocallena Corazón Colorido" loading="lazy" decoding="async"><figcaption>Bocallena Corazón Colorido · lienzo</figcaption></figure>
         <figure class="fig r-3-4 contain"><video class="m" src="/media/ae/ae-bocallena.mp4" poster="/media/ae/ae-bocallena.jpg" controls playsinline muted loop preload="none" aria-label="Bocallena Corazón Colorido, capa animada"></video><figcaption>Bocallena Corazón Colorido · capa animada</figcaption></figure>
     </div>
@@ -105,9 +106,10 @@
         </div>
         <div class="footer-bottom">
             <span>© <span data-year>2026</span> RALPHA L. · Caracas · Colombia</span>
-            <span><a href="https://www.instagram.com/ralphal.art/" target="_blank" rel="noopener" style="text-decoration:none">@ralphal.art</a> · Let your senses lead.</span>
+            <span><a href="/laboratorio" style="text-decoration:none">Laboratorio</a> · <a href="https://www.instagram.com/ralphal.art/" target="_blank" rel="noopener" style="text-decoration:none">@ralphal.art</a> · Let your senses lead.</span>
         </div>
     </footer>
-    <script src="/main.js?v=4"></script>
+    <script src="/main.js?v=5"></script>
+    <script src="/lab.js?v=5" defer></script>
 </body>
 </html>

@@ -1186,3 +1186,75 @@ a.brutalist-btn, a.secondary-btn { text-decoration: none; }
     .timeline-horizontal-grid::before { display: none; }
 }
 .fig.light .m, .fig.contain.light .m { background: #f1efe9; }
+
+/* =========================================================
+   FASE 1 · Experiencias sensoriales
+   ========================================================= */
+/* Cuarto oscuro */
+.image-wrapper.gl-on { filter: none; background: #000; cursor: crosshair; touch-action: pan-y; }
+.image-wrapper.gl-on .hero-portrait { visibility: hidden; }
+.image-wrapper.gl-on .halftone-overlay, .image-wrapper.gl-on .light-map-effect { display: none; }
+.darkroom-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 1; }
+.darkroom-tools { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: -1rem; }
+.darkroom-hint { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(245,245,245,.5); }
+.light-toggle { font: 700 .72rem var(--font-primary); letter-spacing: .12em; text-transform: uppercase; color: var(--color-white); background: transparent; border: 1px solid rgba(245,245,245,.3); padding: .5rem .9rem; cursor: pointer; transition: border-color .3s, background .3s; }
+.light-toggle:hover { border-color: var(--color-violet); }
+.light-toggle[aria-pressed="true"] { background: var(--color-violet); border-color: var(--color-violet); }
+.image-wrapper:not(.gl-on) ~ .darkroom-tools .darkroom-hint { visibility: hidden; }
+
+/* Transiciones entre páginas */
+@view-transition { navigation: auto; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .4s; }
+::view-transition-group(*) { animation-duration: .55s; animation-timing-function: cubic-bezier(.2,.7,.1,1); }
+@media (prefers-reduced-motion: reduce) {
+    @view-transition { navigation: none; }
+}
+
+/* Escenarios de experimentos */
+.lab-stage { position: relative; aspect-ratio: 4 / 3; max-width: 100%; background: #000; border: 1px solid rgba(245,245,245,.1); overflow: hidden; }
+.lab-stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
+.lab-stage .lab-dark { position: absolute; inset: 0; aspect-ratio: auto; height: 100%; }
+.lab-stage .lab-dark .darkroom-canvas { touch-action: pan-y; }
+.lab-overlay { position: absolute; left: .8rem; right: .8rem; bottom: .8rem; display: flex; justify-content: space-between; align-items: center; gap: .6rem; flex-wrap: wrap; pointer-events: none; z-index: 2; }
+.lab-overlay > * { pointer-events: auto; }
+.lab-ctrl { display: flex; gap: .4rem; flex-wrap: wrap; align-items: center; background: rgba(5,5,5,.75); border: 1px solid rgba(245,245,245,.12); padding: .45rem; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.lab-btn { font: 700 .7rem var(--font-primary); letter-spacing: .1em; text-transform: uppercase; color: var(--color-white); background: transparent; border: 1px solid rgba(245,245,245,.25); padding: .55rem .75rem; cursor: pointer; }
+.lab-btn:hover { border-color: var(--color-violet); }
+.lab-btn[aria-pressed="true"] { background: var(--color-violet); border-color: var(--color-violet); }
+.lab-btn.solid { background: var(--color-white); color: var(--color-black); border-color: var(--color-white); }
+.lab-fader { display: flex; align-items: center; gap: .45rem; font: 700 .66rem var(--font-primary); letter-spacing: .1em; text-transform: uppercase; color: rgba(245,245,245,.6); }
+.lab-fader input { width: 120px; accent-color: var(--color-violet); }
+.lab-readout { font: 700 .72rem var(--font-primary); letter-spacing: .08em; background: rgba(5,5,5,.75); border: 1px solid rgba(245,245,245,.12); padding: .45rem .7rem; font-variant-numeric: tabular-nums; }
+.breath-word { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; font-family: var(--font-secondary); font-weight: 400; font-size: clamp(1.3rem, 3vw, 2.1rem); letter-spacing: .3em; text-indent: .3em; text-transform: uppercase; z-index: 1; }
+
+/* Pausa en Sobre mí */
+.pausa-section { display: grid; grid-template-columns: 1fr 1.1fr; gap: 3rem; align-items: center; padding: 4rem var(--section-px); border-top: 1px solid rgba(245,245,245,0.1); }
+.pausa-copy h2 { font-family: var(--font-secondary); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 900; line-height: 1.1; text-transform: uppercase; margin-bottom: 1.2rem; }
+.pausa-copy p { color: rgba(245,245,245,.72); max-width: 560px; }
+
+/* Página Laboratorio */
+.lab-entry { display: grid; grid-template-columns: 1fr 1.3fr; gap: 3rem; align-items: center; padding: 4rem var(--section-px); border-top: 1px solid rgba(245,245,245,0.1); }
+.lab-entry:nth-of-type(even) .lab-copy { order: 2; }
+.lab-copy { display: grid; gap: 1rem; }
+.lab-copy h2 { font-family: var(--font-secondary); font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 900; text-transform: uppercase; line-height: 1; }
+.lab-copy p { color: rgba(245,245,245,.72); max-width: 520px; }
+.lab-copy .lab-how { color: rgba(245,245,245,.5); font-size: .85rem; letter-spacing: .04em; }
+.lab-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+.lab-links a { color: var(--color-violet); text-decoration: none; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; }
+.lab-links a:hover { color: var(--color-white); }
+
+@media (max-width: 900px) {
+    .pausa-section, .lab-entry { grid-template-columns: 1fr; gap: 1.5rem; }
+    .lab-entry:nth-of-type(even) .lab-copy { order: 0; }
+}
+@media (max-width: 520px) {
+    .lab-stage { aspect-ratio: 3 / 4; }
+    .lab-fader input { width: 84px; }
+    .darkroom-tools { margin-top: -.5rem; }
+}
+@media (max-width: 560px) {
+    .nav-hide-sm { display: none; }
+    .nav-links { gap: .9rem; }
+    .nav-link { font-size: .7rem; letter-spacing: .06em; }
+    .contact-btn { padding: .45rem .6rem; }
+}
