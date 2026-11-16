@@ -65,6 +65,11 @@ function init(root) {
     let theta = reduce ? 0 : 0.12, omega = 0, fallen = false, fallY = 0, fallV = 0, fallT = 0;
     let phi = 0, phiTarget = 0, tiltOn = false;
     let nextGust = 3 + Math.random() * 3;
+    // juego de balanceo: tocar al elefante lo impulsa; gana quien lo sube más alto sin que caiga
+    const FALL = 1.95;
+    let peak = 0, best = 0, fallCause = '', lastSign = 0, pulse = 0, elephant = null, taps = 0;
+    try { best = +localStorage.getItem('lph-swing-best') || 0; } catch (e) {}
+    const deg = (r) => Math.round(Math.abs(r) * 180 / Math.PI);
 
     function inertia() {
         let I = 0.3; for (const k in bodies) { const b = bodies[k]; if (b.on) I += b.m * (b.x * b.x + b.y * b.y); } return I;
@@ -81,30 +86,48 @@ function init(root) {
     }
     function say(text) { if (status && status.textContent !== text) status.textContent = text; }
     function describe() {
-        if (fallen) return say('Se cayó. Sin lo que nos formó, no hay equilibrio.');
-        const deg = Math.round(Math.abs(theta * 180 / Math.PI));
-        const eq = equilibrium();
+        if (fallen) return say(fallCause === 'juego' ? 'Se cayó a los ' + deg(peak) + '°. Más suave la próxima.' : 'Se cayó. Sin lo que nos formó, no hay equilibrio.');
         if (!bodies.izq.on && !bodies.der.on) return say('Sin flores: el equilibrio se pierde…');
-        if (!bodies.izq.on || !bodies.der.on) return say('Con una sola flor se inclina ' + deg + '°');
-        say(deg < 4 ? 'En equilibrio' : 'Se balancea ' + deg + '°');
+        if (!bodies.izq.on || !bodies.der.on) return say('Con una sola flor se inclina ' + deg(theta) + '°');
+        if (taps === 0) return say(deg(theta) < 4 ? 'En equilibrio · tócalo para balancearlo' : 'Se balancea ' + deg(theta) + '°');
+        say('Altura ' + deg(theta) + '° · Récord ' + deg(best) + '°');
     }
 
     // interacción: arrastrar empuja
     let dragging = false, lastX = 0, lastT = 0;
     const el = renderer.domElement;
-    el.addEventListener('pointerdown', (e) => { dragging = true; lastX = e.clientX; lastT = performance.now(); el.setPointerCapture?.(e.pointerId); });
+    let downX = 0, downY = 0, downT = 0;
+    el.addEventListener('pointerdown', (e) => { dragging = true; lastX = downX = e.clientX; downY = e.clientY; lastT = downT = performance.now(); el.setPointerCapture?.(e.pointerId); });
     el.addEventListener('pointermove', (e) => {
         if (!dragging || fallen) return;
         const now = performance.now(), dx = e.clientX - lastX, dt = Math.max(8, now - lastT);
         omega += (dx / dt) * 0.9 / Math.max(1, inertia() / 6);
         lastX = e.clientX; lastT = now;
     });
-    const end = () => { dragging = false; };
+    const ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
+    function tap(cx, cy) {
+        if (fallen || !elephant) return;
+        const r = el.getBoundingClientRect();
+        ndc.set(((cx - r.left) / r.width) * 2 - 1, -((cy - r.top) / r.height) * 2 + 1);
+        ray.setFromCamera(ndc, camera);
+        const hit = ray.intersectObject(swing, true)[0];
+        if (!hit) return;
+        // empuja en el sentido en que ya va, como un columpio; si está quieto, lo aleja del lado tocado
+        let dir = Math.sign(omega);
+        if (Math.abs(omega) < 0.05) dir = hit.point.x < 0 ? -1 : 1;
+        omega += dir * 0.55 / Math.max(1, inertia() / 14);
+        pulse = 1; taps++;
+    }
+    const end = (e) => {
+        if (dragging && e && e.type === 'pointerup' && Math.hypot(e.clientX - downX, e.clientY - downY) < 8 && performance.now() - downT < 350) tap(e.clientX, e.clientY);
+        dragging = false;
+    };
     el.addEventListener('pointerup', end); el.addEventListener('pointercancel', end);
     el.tabIndex = 0;
     el.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') { omega -= 0.6; e.preventDefault(); }
         if (e.key === 'ArrowRight') { omega += 0.6; e.preventDefault(); }
+        if (e.key === ' ' || e.key === 'Enter') { const r = el.getBoundingClientRect(); const v = new THREE.Vector3(0, 0.27, 0).applyMatrix4(swing.matrixWorld).project(camera); tap(r.left + (v.x + 1) / 2 * r.width, r.top + (1 - v.y) / 2 * r.height); e.preventDefault(); }
     });
 
     function setFlower(side, on) {
@@ -116,7 +139,7 @@ function init(root) {
     btnL?.addEventListener('click', () => { if (!fallen) setFlower('izq', !bodies.izq.on); });
     btnR?.addEventListener('click', () => { if (!fallen) setFlower('der', !bodies.der.on); });
     function reset() {
-        fallen = false; fallY = 0; fallV = 0; theta = 0.18; omega = 0; swing.position.set(0, 0, 0);
+        fallen = false; fallY = 0; fallV = 0; theta = 0.18; omega = 0; swing.position.set(0, 0, 0); peak = 0; taps = 0; fallCause = '';
         setFlower('izq', true); setFlower('der', true);
     }
     btnReset?.addEventListener('click', reset);
@@ -166,7 +189,7 @@ function init(root) {
             const n = (o.name || '') + ' ' + (o.parent ? o.parent.name : '');
             if (/_izq/.test(n)) parts.izq.push(o);
             if (/_der/.test(n)) parts.der.push(o);
-            if (o.material && o.material.name === 'Violeta') { o.material.envMapIntensity = 1.2; }
+            if (o.material && o.material.name === 'Violeta') { o.material.envMapIntensity = 1.2; o.material.emissive = new THREE.Color(0x8a2be2); o.material.emissiveIntensity = 0; elephant = o.material; }
         });
         swing.add(g.scene);
         root.classList.add('eq3d-ready');
@@ -184,13 +207,21 @@ function init(root) {
             // integración en pasos pequeños
             const steps = 4, h = dt / steps, I = inertia();
             for (let i = 0; i < steps; i++) { const a = torque(theta) / I - DAMP * omega; omega += a * h; theta += omega * h; }
-            if (Math.abs(theta) > 1.95) { fallen = true; fallT = 0; fallV = 0; }
+            const both = bodies.izq.on && bodies.der.on;
+            if (both && taps) {
+                peak = Math.max(peak, Math.abs(theta));
+                const sgn = Math.sign(omega);
+                if (lastSign && sgn && sgn !== lastSign && Math.abs(theta) > best) { best = Math.abs(theta); try { localStorage.setItem('lph-swing-best', best.toFixed(3)); } catch (e) {} }
+                lastSign = sgn || lastSign;
+            }
+            if (Math.abs(theta) > FALL) { fallen = true; fallT = 0; fallV = 0; fallCause = both && taps ? 'juego' : 'flores'; }
         } else {
             fallT += dt; fallV += 9.8 * dt * 0.6; fallY -= fallV * dt; omega *= 0.99; theta += omega * dt;
             swing.position.y = fallY;
             if (fallT > 2.6) reset();
         }
         swing.rotation.z = theta;
+        if (elephant) { pulse = Math.max(0, pulse - dt * 3); elephant.emissiveIntensity = 0.9 * pulse; }
         // la cuerda se hunde un poco con el balanceo
         const sag = Math.min(0.08, Math.abs(omega) * 0.04);
         if (!fallen) swing.position.y = -sag; rope.position.y = fallen ? 0 : -sag;
