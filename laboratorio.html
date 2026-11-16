@@ -13,8 +13,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=8">
+    <link rel="stylesheet" href="/styles.css?v=9">
     <script>try{document.documentElement.setAttribute('data-sense',localStorage.getItem('ralphal-sense')||'ver')}catch(e){}</script>
+    <script type="importmap">{"imports":{"three":"/vendor/three/build/three.module.min.js","three/addons/":"/vendor/three/examples/jsm/"}}</script>
 </head>
 <body data-ambient="laboratorio">
     <div class="cursor-dot"></div>
@@ -83,12 +84,23 @@
         <div class="lab-copy">
             <p class="case-kicker">Experimento 03 · Nov 2026</p>
             <h2>Equilibrio</h2>
-            <p>LPhanty se balancea sobre una cuerda floja que representa a la sociedad. Las dos flores son los objetos que nos formaron. Si el peso se va hacia un lado, cae.</p><p class="lab-how">Mueve el cursor o arrastra el dedo de lado a lado. También funciona con las flechas del teclado.</p>
+            <p>LPhanty se balancea sobre una cuerda floja que representa a la sociedad. Las dos margaritas son los objetos que nos formaron: bajan su centro de masa y lo sostienen. Quita una y se inclina; quita las dos y cae.</p><p class="lab-how">Arrastra para empujarlo. En el teléfono puedes inclinarlo con el sensor.</p>
             <p class="lab-links"><a href="/lphanty">Ver LPhanty →</a></p>
         </div>
-        <div class="lab-stage" data-equilibrio>
-            <canvas aria-label="Juego de equilibrio: mueve el cursor o el dedo de lado a lado para equilibrar al elefante"></canvas>
-            <div class="lab-overlay"><span class="lab-readout" data-held>En equilibrio 0.0 s</span><span class="lab-readout" data-best>Récord 0.0 s</span></div>
+        <div class="eq3d" data-equilibrio3d data-model="/media/lph/lphanty.glb">
+            <div class="eq3d-stage">
+                <img class="eq3d-poster" src="/media/lph/lphanty-3d.jpg" alt="LPhanty violeta con dos margaritas sobre la cuerda floja">
+            </div>
+            <div class="eq3d-bar">
+                <span class="eq3d-status" data-eq-status aria-live="polite">Cargando la pieza…</span>
+                <div class="eq3d-ctrl" role="group" aria-label="Controles de la pieza">
+                    <button type="button" class="lab-btn" data-flower="izq" aria-pressed="true">Flor izquierda</button>
+                    <button type="button" class="lab-btn" data-flower="der" aria-pressed="true">Flor derecha</button>
+                    <button type="button" class="lab-btn" data-tilt aria-pressed="false" hidden>Inclinar con el teléfono</button>
+                    <button type="button" class="lab-btn" data-reset>Reiniciar</button>
+                </div>
+            </div>
+            <p class="eq3d-hint">Arrastra para empujarlo. Quita una flor y mira qué pasa con el equilibrio.</p>
         </div>
     </article>
     <article class="lab-entry">
@@ -123,8 +135,9 @@
             <span><a href="/laboratorio" style="text-decoration:none">Laboratorio</a> · <a href="https://www.instagram.com/ralphal.art/" target="_blank" rel="noopener" style="text-decoration:none">@ralphal.art</a> · Let your senses lead.</span>
         </div>
     </footer>
-    <script src="/main.js?v=8"></script>
-    <script src="/lab.js?v=8" defer></script>
-    <script src="/senses.js?v=8" defer></script>
+    <script src="/main.js?v=9"></script>
+    <script src="/lab.js?v=9" defer></script>
+    <script src="/senses.js?v=9" defer></script>
+    <script type="module" src="/equilibrio3d.js?v=9"></script>
 </body>
 </html>
