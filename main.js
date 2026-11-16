@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if ('IntersectionObserver' in window) {
         const io = new IntersectionObserver(entries => {
             entries.forEach(({ target, isIntersecting }) => {
-                if (isIntersecting) { target.muted = true; const p = target.play(); if (p) p.catch(() => {}); }
+                if (isIntersecting && document.documentElement.getAttribute('data-sense') !== 'calma') { target.muted = true; const p = target.play(); if (p) p.catch(() => {}); }
                 else target.pause();
             });
         }, { rootMargin: '150px' });

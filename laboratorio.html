@@ -13,9 +13,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=5">
+    <link rel="stylesheet" href="/styles.css?v=6">
+    <script>try{document.documentElement.setAttribute('data-sense',localStorage.getItem('ralphal-sense')||'ver')}catch(e){}</script>
 </head>
-<body>
+<body data-ambient="laboratorio">
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
@@ -27,6 +28,7 @@
             <a href="/#work" class="nav-link nav-hide-sm">Proyectos</a>
             <a href="/laboratorio" class="nav-link">Laboratorio</a>
             <a href="/about" class="nav-link">Sobre mí</a>
+            <button type="button" class="sense-btn" data-sense-open aria-label="Elegir sentido"><span class="sense-dot" aria-hidden="true"></span><span class="sense-word">Ver</span></button>
             <div class="nav-contact-wrapper">
                 <a href="#contacto" class="nav-link contact-btn">Contacto</a>
                 <div class="contact-popup">
@@ -63,7 +65,7 @@
             <p class="case-kicker">Experimento 02 · Nov 2026</p>
             <h2>Cabina abierta</h2>
             <p>Dos loops en un crossfader, como en Resolume. Activa el sonido y los visuales siguen un beat a 120 BPM. Es una muestra de lo que hago en cabina en festivales como SoulFire.</p><p class="lab-how">Mueve el crossfader, prueba Caleido y RGB, y enciende el sonido.</p>
-            <p class="lab-links"><a href="/soulfire">Ver SoulFire →</a> <a href="/marthina">Ver Marthina →</a></p>
+            <p class="lab-links"><a href="/cabina">Abrir la cabina con visuales reales →</a> <a href="/soulfire">Ver SoulFire →</a></p>
         </div>
         <div class="lab-stage wide" data-cabina>
             <canvas aria-label="Mezclador de visuales"></canvas>
@@ -121,7 +123,8 @@
             <span><a href="/laboratorio" style="text-decoration:none">Laboratorio</a> · <a href="https://www.instagram.com/ralphal.art/" target="_blank" rel="noopener" style="text-decoration:none">@ralphal.art</a> · Let your senses lead.</span>
         </div>
     </footer>
-    <script src="/main.js?v=5"></script>
-    <script src="/lab.js?v=5" defer></script>
+    <script src="/main.js?v=6"></script>
+    <script src="/lab.js?v=6" defer></script>
+    <script src="/senses.js?v=6" defer></script>
 </body>
 </html>
