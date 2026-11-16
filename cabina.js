@@ -178,7 +178,7 @@
         if (started) return; started = true;
         if (startOverlay) startOverlay.hidden = true;
         if (!decks[0].btn) loadClip(clips[0], 0);
-        if (!decks[1].btn) loadClip(clips[clips.length > 4 ? 4 : 1], 1);
+        if (!decks[1].btn) loadClip(clips[clips.length > 5 ? 5 : 1], 1);
         setTarget(0);
         raf = requestAnimationFrame(frame);
     }
