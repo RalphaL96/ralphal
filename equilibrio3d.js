@@ -48,7 +48,7 @@ function init(root) {
     rope.rotation.x = Math.PI / 2; scene.add(rope);
 
     const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 60);
-    const camTarget = new THREE.Vector3(0, -0.85, 0);
+    const camTarget = new THREE.Vector3(0, -0.38, 0);
 
     // figura que gira sobre la cuerda
     const swing = new THREE.Group(); scene.add(swing);
@@ -57,10 +57,10 @@ function init(root) {
     // física: cuerpo rígido que gira alrededor de la cuerda (eje Z)
     const G = 9.8, DAMP = 0.32;
     const bodies = {
-        elefante: { m: 1.0, x: 0, y: 0.27, on: true },
-        tallos: { m: 0.5, x: 0, y: -0.4, on: true },
-        izq: { m: 0.8, x: -2.25, y: -1.97, on: true },
-        der: { m: 0.8, x: 2.25, y: -1.97, on: true }
+        elefante: { m: 1.0, x: 0, y: 0.74, on: true },
+        tallos: { m: 0.5, x: 0, y: 0.07, on: true },
+        izq: { m: 0.8, x: -2.25, y: -1.5, on: true },
+        der: { m: 0.8, x: 2.25, y: -1.5, on: true }
     };
     let theta = reduce ? 0 : 0.12, omega = 0, fallen = false, fallY = 0, fallV = 0, fallT = 0;
     let phi = 0, phiTarget = 0, tiltOn = false;
@@ -127,7 +127,7 @@ function init(root) {
     el.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') { omega -= 0.6; e.preventDefault(); }
         if (e.key === 'ArrowRight') { omega += 0.6; e.preventDefault(); }
-        if (e.key === ' ' || e.key === 'Enter') { const r = el.getBoundingClientRect(); const v = new THREE.Vector3(0, 0.27, 0).applyMatrix4(swing.matrixWorld).project(camera); tap(r.left + (v.x + 1) / 2 * r.width, r.top + (1 - v.y) / 2 * r.height); e.preventDefault(); }
+        if (e.key === ' ' || e.key === 'Enter') { const r = el.getBoundingClientRect(); const v = new THREE.Vector3(0, 0.74, 0).applyMatrix4(swing.matrixWorld).project(camera); tap(r.left + (v.x + 1) / 2 * r.width, r.top + (1 - v.y) / 2 * r.height); e.preventDefault(); }
     });
 
     function setFlower(side, on) {
