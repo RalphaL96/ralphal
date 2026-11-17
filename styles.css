@@ -1475,3 +1475,9 @@ model-viewer:not(:defined) .ar-btn { display: none; }
 .mano-hud { position: absolute; left: 1rem; right: 1rem; bottom: max(1.2rem, env(safe-area-inset-bottom, 0px)); display: grid; gap: .3rem; justify-items: center; text-align: center; z-index: 5; text-shadow: 0 1px 10px #000; }
 .mano-hud b { font-family: var(--font-secondary); font-size: 1.05rem; text-transform: uppercase; }
 .mano-hud span { font-size: .8rem; color: rgba(245,245,245,.85); font-variant-numeric: tabular-nums; }
+
+/* AR con tu mano: puntos de los dedos */
+.mano-dots { position: absolute; inset: 0; pointer-events: none; z-index: 4; }
+.mano-dots i { position: absolute; left: -7px; top: -7px; width: 14px; height: 14px; border-radius: 50%; background: rgba(138,43,226,.55); box-shadow: 0 0 0 2px rgba(255,255,255,.85), 0 0 18px 4px rgba(138,43,226,.7); opacity: 0; transition: opacity .25s; }
+.mano-dots i:last-child { width: 8px; height: 8px; left: -4px; top: -4px; background: rgba(255,255,255,.6); box-shadow: none; }
+.ar-play { margin-top: .4rem; }
