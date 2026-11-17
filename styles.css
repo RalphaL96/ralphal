@@ -1414,3 +1414,50 @@ html[data-sense="calma"] { scroll-behavior: auto; }
 
 model-viewer.ar-viewer { position: relative; display: block; }
 model-viewer:not(:defined) .ar-btn { display: none; }
+
+/* =========================================================
+   GALERÍA VIVA · Abstracción Emocional
+   ========================================================= */
+.sala { padding: 1rem var(--section-px) 4rem; background: radial-gradient(ellipse at 50% 0%, #15111c 0%, var(--color-black) 70%); }
+.sala-wall { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.5rem, 4vw, 4rem); align-items: end; max-width: 1180px; margin: 0 auto; padding-top: 2rem; }
+.obra { display: grid; gap: 1.1rem; justify-items: center; }
+.obra-frame { position: relative; display: block; width: 100%; max-width: 340px; padding: 0; border: 10px solid #111; outline: 1px solid rgba(245,245,245,.12); background: #000; cursor: pointer; box-shadow: 0 30px 60px -20px rgba(138,43,226,.35), 0 18px 30px -12px rgba(0,0,0,.9); transition: transform .5s ease, box-shadow .5s ease; }
+.obra-frame img, .obra-frame video { display: block; width: 100%; height: auto; }
+.obra-frame video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .6s ease; }
+.obra.vivo .obra-frame video { opacity: 1; }
+.obra.vivo .obra-frame { transform: translateY(-6px); box-shadow: 0 40px 80px -20px rgba(138,43,226,.6), 0 18px 30px -12px rgba(0,0,0,.9); }
+.obra-hint { position: absolute; left: 50%; bottom: .7rem; transform: translateX(-50%); font: 700 .66rem var(--font-primary); letter-spacing: .14em; text-transform: uppercase; color: var(--color-white); background: rgba(5,5,5,.75); border: 1px solid rgba(245,245,245,.25); padding: .35rem .6rem; white-space: nowrap; transition: opacity .3s; }
+.obra.vivo .obra-hint { opacity: 0; }
+.placa { text-align: center; display: grid; gap: .15rem; font-size: .8rem; color: rgba(245,245,245,.6); }
+.placa b { font-family: var(--font-secondary); font-size: 1rem; text-transform: uppercase; color: var(--color-white); letter-spacing: .04em; }
+.placa .estado { color: var(--color-violet); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-size: .7rem; margin-top: .2rem; }
+.sala-note { max-width: 720px; margin: 3rem auto 0; text-align: center; color: rgba(245,245,245,.6); font-size: .92rem; }
+
+.ar-gal { display: grid; grid-template-columns: 1.3fr 1fr; gap: 3rem; align-items: center; padding: 4rem var(--section-px); border-top: 1px solid rgba(245,245,245,.1); }
+.ar-gal-copy { display: grid; gap: 1.2rem; justify-items: start; }
+.ar-gal-copy h2 { font-family: var(--font-secondary); font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 900; text-transform: uppercase; line-height: 1; }
+.ar-steps { margin: 0; padding-left: 1.2rem; display: grid; gap: .6rem; color: rgba(245,245,245,.75); }
+.ar-steps b { color: var(--color-white); }
+.ar-gal-note { font-size: .82rem; color: rgba(245,245,245,.5); }
+.ar-gal-qr { display: grid; gap: 1rem; justify-items: center; text-align: center; }
+.ar-gal-qr img { width: 220px; height: 220px; background: #f5f5f5; padding: 10px; }
+.ar-gal-qr p { font-size: .85rem; color: rgba(245,245,245,.6); max-width: 300px; }
+
+.ar-overlay { position: fixed; inset: 0; z-index: 3000; background: #000; }
+.ar-stage { position: absolute; inset: 0; overflow: hidden; }
+.ar-stage video { object-fit: cover; }
+.ar-top { position: absolute; top: max(1rem, env(safe-area-inset-top, 0px)); left: 1rem; right: 1rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; z-index: 5; }
+.ar-title { font-family: var(--font-secondary); font-weight: 900; text-transform: uppercase; font-size: 1rem; background: rgba(5,5,5,.7); padding: .5rem .8rem; border: 1px solid rgba(245,245,245,.2); }
+.ar-overlay.found .ar-title { border-color: var(--color-violet); color: #fff; }
+.ar-close { font: 700 .75rem var(--font-primary); letter-spacing: .12em; text-transform: uppercase; color: #fff; background: rgba(5,5,5,.75); border: 1px solid rgba(245,245,245,.35); padding: .6rem .9rem; cursor: pointer; }
+.ar-help { position: absolute; left: 1rem; right: 1rem; bottom: max(1.2rem, env(safe-area-inset-bottom, 0px)); text-align: center; font-size: .82rem; color: rgba(245,245,245,.85); z-index: 5; text-shadow: 0 1px 8px #000; transition: opacity .3s; }
+.ar-overlay.found .ar-help { opacity: 0; }
+.ar-status { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 2rem; color: rgba(245,245,245,.85); z-index: 4; pointer-events: none; }
+.ar-status:empty { display: none; }
+
+@media (max-width: 900px) { .ar-gal { grid-template-columns: 1fr; } }
+@media (max-width: 760px) {
+    .sala-wall { grid-template-columns: 1fr; gap: 2.5rem; }
+    .obra-frame { max-width: 65%; }
+    .ar-gal-qr { display: none; }
+}

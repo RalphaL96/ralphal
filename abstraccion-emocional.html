@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abstracción Emocional · Ralpha L.</title>
-    <meta name="description" content="Serie de pinturas que se activan con realidad aumentada o mapping interactivo. Incluye Betrayed Senses (HANDFULL y MOUTHFULL) y Light Mapping Portrait.">
+    <meta name="description" content="Galería viva de Ralpha L.: pinturas que revelan su capa animada en pantalla o con realidad aumentada desde el navegador del teléfono.">
     <meta property="og:title" content="Abstracción Emocional · Ralpha L.">
-    <meta property="og:description" content="Serie de pinturas que se activan con realidad aumentada o mapping interactivo. Incluye Betrayed Senses (HANDFULL y MOUTHFULL) y Light Mapping Portrait.">
+    <meta property="og:description" content="Galería viva de Ralpha L.: pinturas que revelan su capa animada en pantalla o con realidad aumentada desde el navegador del teléfono.">
     <meta property="og:image" content="/media/sf/hero.jpg">
     <meta name="theme-color" content="#050505">
     <link rel="icon" href="/assets/monogram.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=15">
+    <link rel="stylesheet" href="/styles.css?v=16">
     <script>try{document.documentElement.setAttribute('data-sense',localStorage.getItem('ralphal-sense')||'ver')}catch(e){}</script>
+    <script type="importmap">{"imports":{"three":"/vendor/three/build/three.module.min.js","three/addons/":"/vendor/three/examples/jsm/"}}</script>
 </head>
 <body data-ambient="abstraccion-emocional">
     <div class="cursor-dot"></div>
@@ -43,49 +44,69 @@
     <header class="case-header">
         <div>
             <a href="/#work" class="back-link">← Proyectos</a>
-            <p class="case-kicker">02 // Caso · Obra de autor</p>
+            <p class="case-kicker">02 // Galería viva</p>
             <h1 class="case-title">Abstracción<br>Emocional</h1>
-            <p class="case-intro">Pinturas que revelan una capa en movimiento al mirarlas con el teléfono o bajo luz proyectada.</p>
+            <p class="case-intro">Cada pintura de esta sala tiene una capa viva. Pasa el cursor o toca una obra para verla respirar, o abre la cámara de tu teléfono y apúntala hacia el lienzo.</p>
         </div>
-        <dl class="case-meta"><div><dt>Tipo</dt><dd>Obra de autor</dd></div><div><dt>Soporte</dt><dd>Lienzo + AR / mapping</dd></div><div><dt>Tecnología</dt><dd>Artivive · WebAR propia · Resolume</dd></div><div><dt>Estado</dt><dd>Obra disponible y por encargo</dd></div></dl>
+        <dl class="case-meta"><div><dt>Obras en sala</dt><dd>HANDFULL · MOUTHFULL · Bocallena</dd></div><div><dt>Cómo verla</dt><dd>En pantalla o con la cámara</dd></div><div><dt>Tecnología</dt><dd>WebAR propia · sin apps</dd></div><div><dt>Estado</dt><dd>Obra disponible y por encargo</dd></div></dl>
     </header>
-    <div style="view-transition-name: vt-abstraccion-emocional" class="case-hero cols-2">
-        <figure class="fig r-3-4 contain"><img class="m" src="/media/ae/bocallena.jpg" alt="Pintura Bocallena Corazón Colorido" loading="lazy" decoding="async"><figcaption>Bocallena Corazón Colorido · lienzo</figcaption></figure>
-        <figure class="fig r-3-4 contain"><video class="m" src="/media/ae/ae-bocallena.mp4" poster="/media/ae/ae-bocallena.jpg" controls playsinline muted loop preload="none" aria-label="Bocallena Corazón Colorido, capa animada"></video><figcaption>Bocallena Corazón Colorido · capa animada</figcaption></figure>
-    </div>
+    <section class="sala" aria-label="Sala de Abstracción Emocional">
+        <div class="sala-wall">
+        <article class="obra" data-obra>
+            <button type="button" class="obra-frame" aria-label="Ver la capa viva de HANDFULL">
+                <img src="/media/galeria/handfull.jpg" alt="HANDFULL, pintura de Ralpha L." loading="lazy">
+                <video data-src="/media/galeria/handfull.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+                <span class="obra-hint">Capa viva</span>
+            </button>
+            <div class="placa"><b>HANDFULL</b><span>Serie Betrayed Senses</span><span>Pintura con capa viva en realidad aumentada</span><span class="estado">Colección privada</span></div>
+        </article>
+        <article class="obra" data-obra>
+            <button type="button" class="obra-frame" aria-label="Ver la capa viva de MOUTHFULL">
+                <img src="/media/galeria/mouthfull.jpg" alt="MOUTHFULL, pintura de Ralpha L." loading="lazy">
+                <video data-src="/media/galeria/mouthfull.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+                <span class="obra-hint">Capa viva</span>
+            </button>
+            <div class="placa"><b>MOUTHFULL</b><span>Serie Betrayed Senses</span><span>Pintura con capa viva en realidad aumentada</span><span class="estado">Colección privada</span></div>
+        </article>
+        <article class="obra" data-obra>
+            <button type="button" class="obra-frame" aria-label="Ver la capa viva de Bocallena Corazón Colorido">
+                <img src="/media/galeria/bocallena.jpg" alt="Bocallena Corazón Colorido, pintura de Ralpha L." loading="lazy">
+                <video data-src="/media/galeria/bocallena.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+                <span class="obra-hint">Capa viva</span>
+            </button>
+            <div class="placa"><b>Bocallena Corazón Colorido</b><span>Abstracción Emocional</span><span>Pintura con capa viva en realidad aumentada</span><span class="estado">Consultar disponibilidad</span></div>
+        </article>
+        </div>
+        <p class="sala-note">HANDFULL y MOUTHFULL forman Betrayed Senses, una serie gemela donde la mano y la boca traicionan a los sentidos que deberían representar. Ambas tienen propietario y viven en una colección privada.</p>
+    </section>
+
+    <section class="ar-gal" id="ar">
+        <div class="ar-gal-copy">
+            <p class="case-kicker">Realidad aumentada</p>
+            <h2>Mírala con tu teléfono</h2>
+            <ol class="ar-steps">
+                <li><b>Abre la cámara</b> con el botón. El navegador te pedirá permiso.</li>
+                <li><b>Apunta a una obra</b>: la pintura real o su imagen en otra pantalla.</li>
+                <li><b>La capa viva aparece</b> sobre el lienzo y se mueve con él.</li>
+            </ol>
+            <button type="button" class="brutalist-btn" data-ar-open>Abrir cámara <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="arrow-icon"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></button>
+            <p class="ar-gal-note">Sin instalar apps: funciona en el navegador de iPhone y Android. La primera vez descarga unos 4 MB.</p>
+        </div>
+        <div class="ar-gal-qr">
+            <img src="/media/galeria/qr-ar.svg" alt="Código QR que abre esta galería en el teléfono" width="220" height="220">
+            <p>¿Estás en la computadora? Escanea el código con tu teléfono y apunta la cámara a las obras de esta pantalla.</p>
+        </div>
+    </section>
     <section class="ccpr">
         <div><h2>Contexto</h2><p>Abstracción Emocional es mi serie de obra propia. Las pinturas se activan con realidad aumentada o con mapping interactivo y revelan una capa en movimiento.</p></div>
-        <div><h2>Problema</h2><p>Cómo extender la experiencia de un cuadro más allá de lo que el ojo ve, sin romper su silencio minimalista.</p></div>
-        <div><h2>Solución</h2><p>Cada lienzo tiene una capa en movimiento que lo completa. Con realidad aumentada, el espectador la descubre desde su teléfono; con mapping interactivo, la luz se proyecta directamente sobre la obra. En ambos casos el cuadro deja de ser solo una imagen y se vuelve una experiencia sensorial.</p></div>
-        <div><h2>Rol y créditos</h2><p>Obra de autor. Concepto, pintura, animación y desarrollo AR: Ralpha L.</p><p class="credit">Tecnología: Artivive y mi propia WebAR para la realidad aumentada; Resolume para el mapping.</p></div>
+        <div><h2>Problema</h2><p>Cómo extender la experiencia de un cuadro más allá de lo que el ojo ve, sin romper su silencio minimalista, y sin pedirle al público que instale una app.</p></div>
+        <div><h2>Solución</h2><p>Cada lienzo tiene una capa en movimiento que lo completa. Desarrollé mi propia WebAR: el navegador del teléfono reconoce la pintura y superpone la capa viva exactamente sobre ella. Con mapping interactivo, la luz se proyecta directamente sobre la obra. En ambos casos el cuadro deja de ser solo una imagen y se vuelve una experiencia sensorial.</p></div>
+        <div><h2>Rol y créditos</h2><p>Obra de autor. Concepto, pintura, animación y desarrollo de la WebAR: Ralpha L.</p><p class="credit">Tecnología: WebAR propia con reconocimiento de imagen (MindAR) y Resolume para el mapping.</p></div>
     </section>
     <section class="case-section">
         <div class="case-section-head">
-            <h2><span class="electric-violet">Cómo se vive //</span> La obra en tres pasos</h2>
-            
-        </div>
-        <div class="steps s3">
-        <div class="step done"><small>01</small><b>La obra</b><p>MOUTHFULL, de la serie Betrayed Senses: color, línea y punto sobre lienzo. La pieza funciona sola.</p></div>
-        <div class="step done"><small>02</small><b>La activación</b><p>El teléfono reconoce la obra y abre su capa oculta.</p></div>
-        <div class="step done"><small>03</small><b>La capa viva</b><p>MOUTHFULL respira: los trazos fluyen desde el ojo.</p></div>
-    </div>
-    </section>
-    <section class="case-section">
-        <div class="case-section-head">
-            <h2><span class="electric-violet">Betrayed Senses //</span> Serie gemela</h2>
-            <p class="lede">HANDFULL y MOUTHFULL son dos piezas concebidas para leerse juntas, donde la mano y la boca traicionan a los sentidos que deberían representar. Ambas tienen propietario y viven en una colección privada.</p>
-        </div>
-        <div class="gallery g4">
-        <figure class="fig r-4-5 contain"><img class="m" src="/media/ae/mano.jpg" alt="HANDFULL, lienzo" loading="lazy" decoding="async"><figcaption>HANDFULL · lienzo</figcaption></figure>
-        <figure class="fig r-4-5 contain"><video class="m" src="/media/ae/ae-mano.mp4" poster="/media/ae/ae-mano.jpg" controls playsinline muted loop preload="none" aria-label="HANDFULL, capa animada"></video><figcaption>HANDFULL · capa animada</figcaption></figure>
-        <figure class="fig r-4-5 contain"><img class="m" src="/media/ae/ojo-azul.jpg" alt="MOUTHFULL, lienzo" loading="lazy" decoding="async"><figcaption>MOUTHFULL · lienzo</figcaption></figure>
-        <figure class="fig r-4-5 contain"><video class="m" src="/media/ae/ae-ojo.mp4" poster="/media/ae/ae-ojo.jpg" controls playsinline muted loop preload="none" aria-label="MOUTHFULL, capa animada"></video><figcaption>MOUTHFULL · capa animada</figcaption></figure>
-    </div>
-    </section>
-    <section class="case-section">
-        <div class="case-section-head">
-            <h2><span class="electric-violet">En el espacio //</span> WebAR propia y light mapping</h2>
-            <p class="lede">Mindblown se activa en la pared con la herramienta de realidad aumentada que desarrollé para mis obras. Light Mapping Portrait lleva la misma idea al cuerpo: el participante se vuelve el lienzo.</p>
+            <h2><span class="electric-violet">En el espacio //</span> WebAR en sala y light mapping</h2>
+            <p class="lede">Mindblown se activa en la pared con mi WebAR. Light Mapping Portrait lleva la misma idea al cuerpo: el participante se vuelve el lienzo.</p>
         </div>
         <div class="gallery g3">
         <figure class="fig r-9-16"><video class="m" src="/media/ae/ae-mesa.mp4" poster="/media/ae/ae-mesa.jpg" controls playsinline muted loop preload="none" aria-label="HANDFULL y MOUTHFULL juntas en el taller"></video><figcaption>Betrayed Senses en el taller · colección privada</figcaption></figure>
@@ -111,8 +132,10 @@
             <span><a href="/laboratorio" style="text-decoration:none">Laboratorio</a> · <a href="https://www.instagram.com/ralphal.art/" target="_blank" rel="noopener" style="text-decoration:none">@ralphal.art</a> · Let your senses lead.</span>
         </div>
     </footer>
-    <script src="/main.js?v=15"></script>
-    <script src="/lab.js?v=15" defer></script>
-    <script src="/senses.js?v=15" defer></script>
+    <script src="/main.js?v=16"></script>
+    <script src="/lab.js?v=16" defer></script>
+    <script src="/senses.js?v=16" defer></script>
+    <script src="/galeria.js?v=16" defer></script>
+    <script type="module" src="/galeria-ar.js?v=16"></script>
 </body>
 </html>
