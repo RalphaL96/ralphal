@@ -1461,3 +1461,17 @@ model-viewer:not(:defined) .ar-btn { display: none; }
     .obra-frame { max-width: 65%; }
     .ar-gal-qr { display: none; }
 }
+
+/* Experimento 05 · LPhanty en tu mano */
+.mano-stage { display: grid; place-items: center; }
+.mano-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.45); }
+.mano-cta { position: relative; display: grid; gap: .8rem; justify-items: center; text-align: center; padding: 1rem; max-width: 380px; }
+.mano-cta p { font-size: .8rem; color: rgba(245,245,245,.75); }
+.mano-overlay { position: fixed; inset: 0; z-index: 3000; background: #000; overflow: hidden; }
+.mano-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.mano-overlay.mirror .mano-video { transform: scaleX(-1); }
+.mano-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.mano-actions { display: flex; gap: .4rem; }
+.mano-hud { position: absolute; left: 1rem; right: 1rem; bottom: max(1.2rem, env(safe-area-inset-bottom, 0px)); display: grid; gap: .3rem; justify-items: center; text-align: center; z-index: 5; text-shadow: 0 1px 10px #000; }
+.mano-hud b { font-family: var(--font-secondary); font-size: 1.05rem; text-transform: uppercase; }
+.mano-hud span { font-size: .8rem; color: rgba(245,245,245,.85); font-variant-numeric: tabular-nums; }

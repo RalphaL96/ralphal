@@ -124,7 +124,7 @@
                 mx += (tx - mx) * .09; my += (ty - my) * .09;
                 lit += (litT - lit) * .06;
                 // cambio de obra cada 7 s
-                var el = t - t0;
+                var el = Math.max(0, t - t0);
                 if (arts.length > 1) {
                     var phase = el % 7;
                     if (phase > 5.5) mixA = (phase - 5.5) / 1.5; else mixA = 0;
