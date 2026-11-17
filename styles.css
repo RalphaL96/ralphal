@@ -1395,3 +1395,22 @@ html[data-sense="calma"] { scroll-behavior: auto; }
 @media (max-width: 900px) { .ar-block { grid-template-columns: 1fr; gap: 1.5rem; } }
 @media (max-width: 560px) { .eq3d-stage { aspect-ratio: 1 / 1; } }
 @media (max-width: 768px) { .nav-bar { background: rgba(5,5,5,.88); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); } }
+
+/* Imágenes verticales: que se vean completas y con aire */
+@media (min-width: 769px) {
+    .case-hero.cols-2:has(.r-9-16, .r-3-4, .r-4-5),
+    .gallery.g2:has(.r-9-16, .r-3-4, .r-4-5) { width: 65%; margin-inline: auto; }
+    .case-hero.cols-3:has(.r-9-16),
+    .gallery.g3:has(.r-9-16) { width: 75%; margin-inline: auto; }
+    .case-hero.cols-2:has(.r-9-16, .r-3-4, .r-4-5) { padding: 0; }
+}
+@media (max-width: 768px) {
+    .case-hero.cols-2:has(.r-9-16, .r-3-4, .r-4-5),
+    .gallery.g2:has(.r-9-16, .r-3-4, .r-4-5),
+    .gallery.g3:has(.r-9-16, .r-3-4, .r-4-5) { grid-template-columns: 1fr 1fr; gap: .5rem; }
+    .gallery.g3:has(.r-9-16, .r-3-4, .r-4-5) figcaption,
+    .case-hero.cols-2:has(.r-9-16, .r-3-4, .r-4-5) figcaption { font-size: .62rem; padding: .5rem .6rem; }
+}
+
+model-viewer.ar-viewer { position: relative; display: block; }
+model-viewer:not(:defined) .ar-btn { display: none; }
